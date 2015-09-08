@@ -1,0 +1,5 @@
+.git/
+.idea/
+/application/config/config.php
+/vendor
+/Prim/base

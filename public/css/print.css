@@ -1,0 +1,17 @@
+@page
+{
+    size:landscape
+}
+
+#speedbarre, #menus, .supprimer
+{
+    display: none;
+}
+
+
+#corp
+{
+    margin: 0;
+    right: 0;
+    padding: 0;
+}
