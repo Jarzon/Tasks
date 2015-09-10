@@ -25,7 +25,6 @@ require PRIM . 'Utilities/functions.php';
 
 if(ENV == 'dev') {
     require PRIM . 'Utilities/helper.php';
-    
 }
 
 $router = new RouteCollector();
@@ -37,11 +36,16 @@ $dispatcher = new Dispatcher($router->getData());
 
 $uri = str_replace(URL_SUB_FOLDER, '', $_SERVER['REQUEST_URI']);
 
-$response = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], parse_url($uri, PHP_URL_PATH));
+try {
+    $response = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], parse_url($uri, PHP_URL_PATH));
 
+    // Print out the value returned from the dispatched function
+    echo $response;
 
-// Print out the value returned from the dispatched function
-echo $response;
+    if(ENV == 'dev') echo microtime(true) - $start;
+} catch (\Exception $e) {
+    $error = new \Tasks\Controller\Error;
 
+    echo $error->page404($e);
+}
 
-if(ENV == 'dev') echo microtime(true) - $start;
