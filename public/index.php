@@ -1,5 +1,6 @@
 <?php
 use Prim\Core\Application;
+use Tasks\Controller\Error;
 
 $start = microtime(true);
 
@@ -27,6 +28,12 @@ if(ENV == 'dev') {
     require PRIM . 'Utilities/helper.php';
 }
 
-$app = new Application();
+try {
+    $app = new Application();
+} catch (\Exception $e) {
+    $error = new Error;
+
+    echo $error->page404($e);
+}
 
 if(ENV == 'dev') echo microtime(true) - $start;
