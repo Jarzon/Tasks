@@ -28,7 +28,7 @@
         </nav>
 
         <div id="corp">
-            <div id="message"><?php require APP . 'view/'.$view.'.php'?></div>
+            <div id="message"><?php require ROOT . 'src/view/'.$view.'.php'?></div>
         </div>
 
         <footer class="alignCenter clear">

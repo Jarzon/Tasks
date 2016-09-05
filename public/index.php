@@ -2,18 +2,9 @@
 use Prim\Core\Application;
 use Tasks\Controller\Error;
 
-$start = microtime(true);
-
-// set a constant that holds the project's folder path, like "/var/www/".
-define('ROOT', dirname(__DIR__) . DIRECTORY_SEPARATOR);
-
-// set a constant that holds the project's "application" folder, like "/var/www/application".
-define('APP', ROOT . 'application' . DIRECTORY_SEPARATOR);
-define('PRIM', ROOT . 'Prim' . DIRECTORY_SEPARATOR);
-
-// Autoloading
-require APP . 'autoload.php';
-require PRIM . 'autoload.php';
+// Project's folder path
+define('ROOT', dirname(__DIR__) . DIRECTORY_SEPARATOR); // /var/www/
+define('APP', ROOT . 'app' . DIRECTORY_SEPARATOR); // /var/www/app
 
 // Composer autoloading
 require ROOT . 'vendor/autoload.php';
@@ -21,19 +12,25 @@ require ROOT . 'vendor/autoload.php';
 // load application config (error reporting etc.)
 require APP . 'config/config.php';
 
-
-require PRIM . 'Utilities/functions.php';
-
-if(ENV == 'dev') {
-    require PRIM . 'Utilities/helper.php';
+if(ENV == 'prod') {
+    define('URL_RELATIVE_BASE', $_SERVER['REQUEST_URI']);
+    define('URL_BASE', '');
+}
+else {
+    $dirname = str_replace('public', '', dirname($_SERVER['SCRIPT_NAME']));
+    define('URL_RELATIVE_BASE', str_replace($dirname, '', $_SERVER['REQUEST_URI']));
+    define('URL_BASE', $dirname);
 }
 
+define('URL_PROTOCOL', !empty($_SERVER['HTTPS'])?'https://':'http://');
+define('URL_DOMAIN', $_SERVER['SERVER_NAME']);
+
+define('URL', URL_PROTOCOL . URL_DOMAIN . URL_BASE);
+
 try {
-    $app = new Application();
+    $app = new Application($_SERVER['REQUEST_METHOD'], URL_RELATIVE_BASE);
 } catch (\Exception $e) {
     $error = new Error;
 
     echo $error->page404($e);
 }
-
-if(ENV == 'dev') echo microtime(true) - $start;
