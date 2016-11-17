@@ -1,16 +1,16 @@
 <div class="container">
-    <h1 class="alignCenter"><?= sanitize($t->project->name) ?></h1>
+    <h1 class="alignCenter"><?=$t->project->name ?></h1>
 
     <div>
-        <form action="<?=URL?>projects/updateproject/<?=sanitize($t->project_id)?>" method="POST">
+        <form action="<?=URL?>projects/updateproject/<?=$t->project_id ?>" method="POST">
             <label>Name</label>
-            <input type="text" name="name" value="<?=sanitize($t->project->name)?>" required>
+            <input type="text" name="name" value="<?=$t->project->name ?>" required>
 
             <label>Description</label>
-            <input type="text" name="description" value="<?=sanitize($t->project->description)?>" required>
+            <input type="text" name="description" value="<?=$t->project->description ?>" required>
 
             <label>Priority</label>
-            <input type="text" name="priority" value="<?=sanitize($t->project->priority)?>">
+            <input type="text" name="priority" value="<?=$t->project->priority ?>">
 
             <input type="submit" name="submit_update_task" value="Update">
         </form>
@@ -28,17 +28,17 @@
             <tbody>
             <?php foreach ($t->tasks as $task) { ?>
                 <tr>
-                    <td><a href="<?php echo URL . 'tasks/updatetask/' . sanitize($t->project_id) . '/' . sanitize($task->id); ?>"><?php echo sanitize($task->name);?></a></td>
-                    <td><?php if (isset($task->description)) echo sanitize($task->description); ?></td>
-                    <td><?php if (isset($task->priority)) echo sanitize($task->priority); ?></td>
-                    <td><a href="<?php echo URL . 'tasks/deletetask/' . sanitize($task->id); ?>">delete</a></td>
+                    <td><a href="<?=URL . 'tasks/updatetask/' . $t->project_id . '/' . $task->id ?>"><?=$task->name ?></a></td>
+                    <td><?php if (isset($task->description)) echo $task->description; ?></td>
+                    <td><?php if (isset($task->priority)) echo $task->priority; ?></td>
+                    <td><a href="<?=URL . 'tasks/deletetask/' . $task->id ?>">delete</a></td>
                 </tr>
             <?php } ?>
             </tbody>
         </table>
 
         <div class="box">
-            <form action="<?=URL?>tasks/addtask/<?=sanitize($t->project_id)?>" method="POST">
+            <form action="<?=URL ?>tasks/addtask/<?=$t->project_id ?>" method="POST">
                 <label>Name</label>
                 <input type="text" name="name" value="" required>
 

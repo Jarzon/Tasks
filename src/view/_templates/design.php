@@ -40,8 +40,6 @@
         </script>
 
         <?php /*TODO: Add a if to use the non minified file when in dev env to debug*/?>
-        <script src="<?=URL?>js/jquery.min.js"></script>
         <script src="<?=URL?>js/application.min.js"></script>
-        <script src="<?=URL?>js/jquery-ui.min.js"></script>
 	</body>
 </html>

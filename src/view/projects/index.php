@@ -20,22 +20,22 @@
         <h3 class="alignCenter">List of projects</h3>
         <table class="table">
             <thead>
-            <tr class="grey">
-                <td>Name</td>
-                <td>Desciption</td>
-                <td>Priority</td>
-                <td>DELETE</td>
-            </tr>
+                <tr class="grey">
+                    <th>Name</th>
+                    <th>Desciption</th>
+                    <th>Priority</th>
+                    <th>DELETE</th>
+                </tr>
             </thead>
             <tbody>
-            <?php foreach ($t->projects as $project) { ?>
-                <tr>
-                    <td><a href="<?php echo URL . 'tasks/' . sanitize($project->id); ?>"><?php echo sanitize($project->name);?></a></td>
-                    <td><?php if (isset($project->description)) echo sanitize($project->description); ?></td>
-                    <td><?php if (isset($project->priority)) echo sanitize($project->priority); ?></td>
-                    <td><a href="<?php echo URL . 'projects/deleteproject/' . sanitize($project->id); ?>">delete</a></td>
-                </tr>
-            <?php } ?>
+                <?php foreach ($t->projects as $project): ?>
+                    <tr>
+                        <td><a href="<?=URL . 'tasks/' . $project->id; ?>"><?=$project->name?></a></td>
+                        <td><?php if (isset($project->description)) echo $project->description; ?></td>
+                        <td><?php if (isset($project->priority)) echo $project->priority; ?></td>
+                        <td><a href="<?=URL . 'projects/deleteproject/' . $project->id?>">delete</a></td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
