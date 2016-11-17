@@ -1,13 +1,11 @@
 {
-    "name": "panique/mini",
+    "name": "jarzon/tasks",
     "type": "project",
-    "description": "An extremely simple naked PHP application",
-    "keywords": ["skeleton", "boilerplate", "naked", "barebone", "application"],
-    "homepage": "https://github.com/panique/mini",
+    "description": "",
     "license": "MIT",
     "authors": [
         {
-            "name": "Panique",
+            "name": "Jarzon",
             "role": "Developer"
         }
     ],
@@ -15,10 +13,16 @@
         "issues": "https://github.com/panique/mini/issues",
         "source": "https://github.com/panique/mini"
     },
+    "autoload": {
+        "psr-4": {"Tasks\\": "src/"}
+    },
+    "autoload-dev": {
+        "psr-4": {"Tests\\": "app/tests/"}
+    },
     "require": {
-        "php": ">=5.3.0",
-        "robmorgan/phinx": "^0.4.4",
-        "phroute/phroute": "^2.0"
+        "php": ">=5.6.0",
+        "Jarzon/Prim": "dev-master",
+        "robmorgan/phinx": "^0.6.4"
     },
     "require-dev": {
       "phpunit/phpunit": "4.7.*",

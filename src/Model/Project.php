@@ -1,7 +1,7 @@
 <?php
 namespace Tasks\Model;
 
-class Project extends \Prim\Core\Model
+class Project extends \Prim\Model
 {
     public function getAllProjects()
     {

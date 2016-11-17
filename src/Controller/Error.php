@@ -1,7 +1,7 @@
 <?php
 namespace Tasks\Controller;
 
-use Prim\Core\Controller;
+use Prim\Controller;
 
 /**
  * Class Error

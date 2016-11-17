@@ -1,5 +1,5 @@
 <?php
-use Prim\Core\Application;
+use Prim\Application;
 use Tasks\Controller\Error;
 
 // Project's folder path

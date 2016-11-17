@@ -1,8 +1,8 @@
 <?php
 namespace Tasks\Controller;
 
-use Prim\Core\Translate;
-use Prim\Core\Controller;
+use Prim\Translate;
+use Prim\Controller;
 
 use Tasks\Model\Project;
 
