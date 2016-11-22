@@ -79,31 +79,6 @@ header
     margin-bottom: 10px;
 }
 
-#bouttonInscription
-{
-    border: solid 2px;
-    border-color: #8bc1a2 #58bf90 #4fca93 #76a58f;
-    border-radius: 16px;
-    font-size: 20px;
-    color: #fff;
-    padding: 10px;
-
-    vertical-align: middle;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-
-    text-shadow: rgba(10, 10, 10, 0.5) 1px 2px 2px;
-
-    background: #adb;
-
-    box-shadow: 0 10px 16px rgba(40, 245, 80, 0.5), inset 0 -8px 12px 0 #3f7, inset 0 -8px 0 8px #2c6, inset 0 -35px 15px -10px #3e6;
-}
-
-#bouttonInscription:hover {
-    text-shadow: rgb(255, 255, 255) 0 0 5px;
-}
-
 #logo
 {
     background-color: #4a4a4a;
@@ -191,9 +166,7 @@ footer
     padding: 20px;
     clear: both;
 
-    background-color: #4a4a4a;
-
-    background: #4a4a4a radial-gradient(50% 0%, circle cover, #333 0%, rgba(10,10,10,0.0) 20%);
+    background: #4a4a4a;
 }
 
 footer #centre
@@ -229,7 +202,7 @@ footer h2
     text-shadow: none;
 }
 
-footer ul, #footer p
+footer ul, footer p
 {
     margin-top: 10px;
     color: #FFFFFF;
@@ -305,6 +278,10 @@ Style du tableau
 {
     color: #fff;
     background: url('../img/bg_noir.png') repeat-x;
+}
+
+.done {
+    background: #4a664a;
 }
 /*********
 Fin du style du tableau
@@ -542,57 +519,6 @@ Style pour l'inscription
 /*********
 Fin du style pour l'inscription
 *********/
-
-/*******
-Style pour le profil
-*******/
-.avatar_actuel
-{
-    float: right;
-    width: 300px;
-    text-align: center;
-}
-
-.option_label
-{
-    cursor: pointer;
-    float: left;
-    display: block;
-    font-weight: bold;
-    margin-right: 8px;
-    text-align: right;
-    width: 142px;
-}
-
-.option_label, #option input, #option select, .option_sexe
-{
-    margin-top: 5px;
-}
-
-.option_sexe_label
-{
-    margin-top: 3px;
-}
-
-.signature_label, .description_label
-{
-    cursor: pointer;
-    font-weight: bold;
-    display: block;
-    float: left;
-    text-align: right;
-    width: 142px;
-    margin-top: 5px;
-    margin-bottom: 3px;
-}
-
-#barre_bbcode
-{
-    text-align: left;
-}
-/*******
-Fin du style pour le profil
-*******/
 
 /*******
 Style pour les formulaires

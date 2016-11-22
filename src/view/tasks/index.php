@@ -1,3 +1,9 @@
+<?php
+    $status = [
+        'open',
+        'done'
+    ];
+?>
 <div class="container">
     <h1 class="alignCenter"><?=$t->project->name ?></h1>
 
@@ -22,16 +28,16 @@
                 <td>Name</td>
                 <td>Desciption</td>
                 <td>Priority</td>
-                <td>DELETE</td>
+                <td>Done</td>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($t->tasks as $task) { ?>
-                <tr>
+                <tr class="<?=$status[$task->status]?>">
                     <td><a href="<?=URL . 'tasks/updatetask/' . $t->project_id . '/' . $task->id ?>"><?=$task->name ?></a></td>
                     <td><?php if (isset($task->description)) echo $task->description; ?></td>
                     <td><?php if (isset($task->priority)) echo $task->priority; ?></td>
-                    <td><a href="<?=URL . 'tasks/deletetask/' . $task->id ?>">delete</a></td>
+                    <td><a href="<?=URL . 'tasks/'.$t->project_id.'/donetask/'.$task->id ?>">✓</a></td>
                 </tr>
             <?php } ?>
             </tbody>

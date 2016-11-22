@@ -5,7 +5,7 @@ class Task extends \Prim\Model
 {
     public function getAllProjectTasks($project_id)
     {
-        $sql = "SELECT id, name, description, priority FROM task WHERE project_id = :project_id";
+        $sql = "SELECT id, name, description, priority, status FROM task WHERE project_id = :project_id ORDER BY status ASC, priority DESC";
         $query = $this->db->prepare($sql);
 
         $parameters = array(':project_id' => $project_id);
@@ -82,6 +82,19 @@ class Task extends \Prim\Model
         $sql = "DELETE FROM task WHERE id = :task_id";
         $query = $this->db->prepare($sql);
         $parameters = array(':task_id' => $task_id);
+
+        $query->execute($parameters);
+    }
+
+    /**
+     * Mark a task as done
+     * @param int $task_id Id of task
+     */
+    public function doneTask($project_id, $task_id)
+    {
+        $sql = "UPDATE task SET status = 1 WHERE id = :task_id AND project_id = :project_id ";
+        $query = $this->db->prepare($sql);
+        $parameters = array(':task_id' => $task_id, ':project_id' => $project_id);
 
         $query->execute($parameters);
     }

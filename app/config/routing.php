@@ -13,3 +13,4 @@ $router->get('/tasks/updatetask/{id_project:\d+}/{id_task:\d+}', ['\Tasks\Contro
 $router->post('/tasks/updatetask/{id_project:\d+}/{id_task:\d+}', ['\Tasks\Controller\Tasks', 'updateTask']);
 $router->post('/tasks/addtask/{id:\d+}', ['\Tasks\Controller\Tasks', 'addTask']);
 $router->get('/tasks/deletetask/{id:\d+}', ['\Tasks\Controller\Tasks', 'deleteTask']);
+$router->get('/tasks/donetask/{id_project:\d+}/{id_task:\d+}', ['\Tasks\Controller\Tasks', 'doneTask']);

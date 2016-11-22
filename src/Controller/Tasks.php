@@ -133,6 +133,24 @@ class Tasks extends Controller
     }
 
     /**
+     * ACTION: deleteTask
+     * @param int $task_id Id of the to-delete task
+     */
+    public function doneTask($project_id, $task_id)
+    {
+        $task = new Task($this->db);
+
+        // if we have an id of a task that should be deleted
+        if (isset($task_id)) {
+            // do deleteTask() in model/model.php
+            $task->doneTask($project_id, $task_id);
+        }
+
+        // where to go after task has been deleted
+        header('location: ' . URL . 'tasks/'.$project_id);
+    }
+
+    /**
      * AJAX-ACTION: ajaxGetStats
      */
     public function ajaxGetStats()

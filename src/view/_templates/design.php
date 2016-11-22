@@ -16,7 +16,7 @@
         <link href="<?=URL?>css/style.min.css" rel="stylesheet">
         <link href="<?=URL?>css/jquery-ui.min.css" rel="stylesheet">
 	</head>
-	<body onclick="event.target.requestFullScreen()">
+	<body>
 
         <nav>
             <ul id="menu">
@@ -35,11 +35,5 @@
             Jason Vaillancourt
         </footer>
 
-        <script>
-            var url = "<?php echo URL; ?>"
-        </script>
-
-        <?php /*TODO: Add a if to use the non minified file when in dev env to debug*/?>
-        <script src="<?=URL?>js/application.min.js"></script>
 	</body>
 </html>
