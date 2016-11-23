@@ -5,7 +5,7 @@ class Project extends \Prim\Model
 {
     public function getAllProjects()
     {
-        $sql = "SELECT id, name, description, priority FROM project";
+        $sql = "SELECT id, name, description, priority FROM project ORDER BY priority DESC";
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -61,7 +61,7 @@ class Project extends \Prim\Model
      * @param string $priority
      * @param int $project_id
      */
-    public function updateProject($name, $description, $priority, $project_id)
+    public function updateProject($project_id, $name, $description, $priority)
     {
         $sql = "UPDATE project SET name = :name, description = :description, priority = :priority WHERE id = :project_id";
         $query = $this->db->prepare($sql);

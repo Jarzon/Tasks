@@ -56,7 +56,6 @@ class Projects extends Controller
             $project->deleteProject($project_id);
         }
 
-        // where to go after project has been deleted
         header('location: ' . URL . 'projects/');
     }
 
@@ -68,11 +67,10 @@ class Projects extends Controller
         $project = new Project($this->db);
 
         if (isset($_POST['submit_update_project'])) {
-            $project->updateProject($_POST['name'], $_POST['description'],  $_POST['priority'], $_POST['project_id']);
+            $project->updateProject($project_id, $_POST['name'], $_POST['description'],  $_POST['priority']);
         }
 
-        // where to go after project has been added
-        header('location: ' . URL . 'projects/'.$project_id);
+        header('location: ' . URL . 'tasks/'.$project_id);
     }
 
     /**

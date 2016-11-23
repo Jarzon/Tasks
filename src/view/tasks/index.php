@@ -37,7 +37,7 @@
                     <td><a href="<?=URL . 'tasks/updatetask/' . $t->project_id . '/' . $task->id ?>"><?=$task->name ?></a></td>
                     <td><?php if (isset($task->description)) echo $task->description; ?></td>
                     <td><?php if (isset($task->priority)) echo $task->priority; ?></td>
-                    <td><a href="<?=URL . 'tasks/'.$t->project_id.'/donetask/'.$task->id ?>">✓</a></td>
+                    <td><a href="<?=URL . 'tasks/donetask/'.$t->project_id.'/'.$task->id ?>">✓</a></td>
                 </tr>
             <?php } ?>
             </tbody>
