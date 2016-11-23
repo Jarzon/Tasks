@@ -56,10 +56,11 @@ class Project extends \Prim\Model
 
     /**
      * Update a project in database
+     * @param int $project_id
      * @param string $name
      * @param string $description
      * @param string $priority
-     * @param int $project_id
+
      */
     public function updateProject($project_id, $name, $description, $priority)
     {

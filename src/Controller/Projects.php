@@ -35,7 +35,7 @@ class Projects extends Controller
     {
         $project = new Project($this->db);
 
-        if (isset($_POST["submit_add_project"])) {
+        if (isset($_POST['submit_add_project'])) {
 
             $project->addProject($_POST['name'], $_POST['description'], $_POST['priority']);
         }
@@ -61,6 +61,7 @@ class Projects extends Controller
 
     /**
      * ACTION: updateProject
+     * @param int $project_id Id of the project to update
      */
     public function updateProject($project_id)
     {
@@ -72,17 +73,4 @@ class Projects extends Controller
 
         header('location: ' . URL . 'tasks/'.$project_id);
     }
-
-    /**
-     * AJAX-ACTION: ajaxGetStats
-     */
-    public function ajaxGetStats()
-    {
-        $project = new Project($this->db);
-
-        $amount_of_projects = $project->getAmountOfProjects();
-
-        echo $amount_of_projects;
-    }
-
 }

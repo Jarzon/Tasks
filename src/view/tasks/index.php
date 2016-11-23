@@ -18,7 +18,7 @@
             <label>Priority</label>
             <input type="text" name="priority" value="<?=$t->project->priority ?>">
 
-            <input type="submit" name="submit_update_task" value="Update">
+            <input type="submit" name="submit_update_project" value="Update">
         </form>
 
         <h3>List of tasks</h3>
