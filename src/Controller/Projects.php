@@ -19,13 +19,13 @@ class Projects extends Controller
     {
         $project = new Project($this->db);
 
-        $t = new Translate($this->_getTranslation());
+        
 
         // getting all projects and amount of projects
-        $t->projects = $project->getAllProjects();
-        $t->amount_of_projects = $project->getAmountOfProjects();
+        $this->addVar('projects', $project->getAllProjects());
+        $this->addVar('amount_of_projects', $project->getAmountOfProjects());
 
-        $this->design('projects/index', $t);
+        $this->design('projects/index');
     }
 
     /**

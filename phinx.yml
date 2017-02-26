@@ -3,8 +3,8 @@ paths:
 
 environments:
     default_migration_table: phinxlog
-    default_database: development
-    production:
+    default_database: dev
+    prod:
         adapter: mysql
         host: localhost
         name: tasks
@@ -13,7 +13,7 @@ environments:
         port: 3306
         charset: utf8
 
-    development:
+    dev:
         adapter: mysql
         host: localhost
         name: tasks
@@ -22,7 +22,7 @@ environments:
         port: 3306
         charset: utf8
 
-    testing:
+    test:
         adapter: mysql
         host: localhost
         name: testing_db

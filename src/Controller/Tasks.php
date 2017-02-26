@@ -20,20 +20,20 @@ class Tasks extends Controller
 
         // if we have an id of a project that should be edited
         if (isset($project_id) && is_numeric($project_id)) {
-            $t = new Translate($this->_getTranslation());
+            
 
             // do getProject() in model/model.php
-            $t->project = $project->getProject($project_id);
+            $this->addVar('project', $project->getProject($project_id));
 
             // in a real application we would also check if this db entry exists and therefore show the result or
             // redirect the user to an error page or similar
 
-            $t->tasks = $task->getAllProjectTasks($project_id);
+            $this->addVar('tasks', $task->getAllProjectTasks($project_id));
 
-            $t->project_id = $project_id;
+            $this->addVar('project_id', $project_id);
 
             // load views. within the views we can echo out $project easily
-            $this->design('tasks/index', $t);
+            $this->design('tasks/index');
 
         } else {
             // redirect user to projects index page (as we don't have a project_id)
@@ -51,18 +51,18 @@ class Tasks extends Controller
         if (isset($project_id) && is_numeric($project_id)) {
 
             if (isset($task_id) && is_numeric($task_id)) {
-                $t = new Translate($this->_getTranslation());
+                
 
                 // in a real application we would also check if this db entry exists and therefore show the result or
                 // redirect the user to an error page or similar
 
                 if($t->task = $task->getTask($task_id))
                 {
-                    $t->project_id = $project_id;
-                    $t->task_id = $task_id;
+                    $this->addVar('project_id', $project_id);
+                    $this->addVar('task_id', $task_id);
 
                     // load views. within the views we can echo out $project easily
-                    $this->design('tasks/task', $t);
+                    $this->design('tasks/task');
                 } else {
                     // redirect user to projects index page (as we don't have a project_id)
                     header('location: ' . URL . 'error/404');

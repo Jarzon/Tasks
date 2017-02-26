@@ -1,15 +1,15 @@
 <div class="container">
-    <h1 class="alignCenter"><?=$t->_('projects')?></h1>
+    <h1 class="alignCenter"><?=$_('projects')?></h1>
 
     <div class="box">
         <form action="<?=URL?>projects/addproject" method="POST">
-            <label><?=$t->_('name')?></label>
+            <label><?=$_('name')?></label>
             <input type="text" name="name" value="" required>
 
-            <label><?=$t->_('description')?></label>
+            <label><?=$_('description')?></label>
             <input type="text" name="description" value="" required>
 
-            <label><?=$t->_('priority')?></label>
+            <label><?=$_('priority')?></label>
             <input type="number" name="priority" value="">
 
             <input type="submit" name="submit_add_project" value="Create">
@@ -28,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($t->projects as $project): ?>
+                <?php foreach ($projects as $project): ?>
                     <tr>
                         <td><a href="<?=URL . 'tasks/' . $project->id; ?>"><?=$project->name?></a></td>
                         <td><?php if (isset($project->description)) echo $project->description; ?></td>

@@ -5,18 +5,18 @@
     ];
 ?>
 <div class="container">
-    <h1 class="alignCenter"><?=$t->project->name ?></h1>
+    <h1 class="alignCenter"><?=$project->name ?></h1>
 
     <div>
-        <form action="<?=URL?>projects/updateproject/<?=$t->project_id ?>" method="POST">
+        <form action="<?=URL?>projects/updateproject/<?=$project_id ?>" method="POST">
             <label>Name</label>
-            <input type="text" name="name" value="<?=$t->project->name ?>" required>
+            <input type="text" name="name" value="<?=$project->name ?>" required>
 
             <label>Description</label>
-            <input type="text" name="description" value="<?=$t->project->description ?>" required>
+            <input type="text" name="description" value="<?=$project->description ?>" required>
 
             <label>Priority</label>
-            <input type="text" name="priority" value="<?=$t->project->priority ?>">
+            <input type="text" name="priority" value="<?=$project->priority ?>">
 
             <input type="submit" name="submit_update_project" value="Update">
         </form>
@@ -32,19 +32,19 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($t->tasks as $task) { ?>
+            <?php foreach ($tasks as $task) { ?>
                 <tr class="<?=$status[$task->status]?>">
-                    <td><a href="<?=URL . 'tasks/updatetask/' . $t->project_id . '/' . $task->id ?>"><?=$task->name ?></a></td>
+                    <td><a href="<?=URL . 'tasks/updatetask/' . $project_id . '/' . $task->id ?>"><?=$task->name ?></a></td>
                     <td><?php if (isset($task->description)) echo $task->description; ?></td>
                     <td><?php if (isset($task->priority)) echo $task->priority; ?></td>
-                    <td><a href="<?=URL . 'tasks/donetask/'.$t->project_id.'/'.$task->id ?>">✓</a></td>
+                    <td><a href="<?=URL . 'tasks/donetask/'.$project_id.'/'.$task->id ?>">✓</a></td>
                 </tr>
             <?php } ?>
             </tbody>
         </table>
 
         <div class="box">
-            <form action="<?=URL ?>tasks/addtask/<?=$t->project_id ?>" method="POST">
+            <form action="<?=URL ?>tasks/addtask/<?=$project_id ?>" method="POST">
                 <label>Name</label>
                 <input type="text" name="name" value="" required>
 

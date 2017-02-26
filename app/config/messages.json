@@ -1,0 +1,9 @@
+{
+  "languages": ["en", "fr"],
+  "welcome": ["Welcome", "Bienvenue"],
+  "todo": ["To do", "Todo"],
+  "projects": ["Projects", "Projets"],
+  "name": ["Name", "Nom"],
+  "description": ["Description", "Description"],
+  "priority": ["Priority", "priorité"]
+}
