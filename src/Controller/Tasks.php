@@ -56,8 +56,9 @@ class Tasks extends Controller
                 // in a real application we would also check if this db entry exists and therefore show the result or
                 // redirect the user to an error page or similar
 
-                if($t->task = $task->getTask($task_id))
+                if($task = $task->getTask($task_id))
                 {
+                    $this->addVar('task', $task);
                     $this->addVar('project_id', $project_id);
                     $this->addVar('task_id', $task_id);
 
