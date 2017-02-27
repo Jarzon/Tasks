@@ -4,23 +4,15 @@ use Phinx\Migration\AbstractMigration;
 
 class InitMigration extends AbstractMigration
 {
-    /**
-    * Change Method.
-    *
-    * Write your reversible migrations using this method.
-    *
-    * More information on writing migrations is available here:
-    * http://docs.phinx.org/en/latest/migrations.html#the-abstractmigration-class
-    */
     public function change()
     {
         $table = $this->table('project');
         $table
-            ->addColumn('name', 'string', array('limit' => 50))
+            ->addColumn('name', 'string', ['limit' => 50])
             ->addColumn('description', 'text')
-            ->addColumn('priority', 'integer')
-            ->addColumn('status', 'integer')
-            ->addColumn('created', 'datetime')
+            ->addColumn('priority', 'integer', ['default' => '50'])
+            ->addColumn('status', 'integer', ['default' => '0'])
+            ->addColumn('created', 'datetime', ['default' => 'CURRENT_TIMESTAMP'])
             ->create();
 
         $table = $this->table('task');
@@ -28,10 +20,10 @@ class InitMigration extends AbstractMigration
             ->addColumn('project_id', 'integer')
             ->addColumn('name', 'string', array('limit' => 50))
             ->addColumn('description', 'text')
-            ->addColumn('priority', 'integer')
-            ->addColumn('time', 'integer')
-            ->addColumn('status', 'integer')
-            ->addColumn('created', 'datetime')
+            ->addColumn('priority', 'integer', ['default' => '0'])
+            ->addColumn('time', 'integer', ['default' => '1'])
+            ->addColumn('status', 'integer', ['default' => '0'])
+            ->addColumn('created', 'datetime', ['default' => 'CURRENT_TIMESTAMP'])
             ->create();
     }
 }
