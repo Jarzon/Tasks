@@ -13,15 +13,15 @@
 		<?php } ?>
 
 		<?php /*TODO: Add a if to use the non minified file when in dev env to be able to debug*/?>
-        <link href="<?=URL?>css/style.min.css" rel="stylesheet">
-        <link href="<?=URL?>css/jquery-ui.min.css" rel="stylesheet">
+        <link href="/css/style.min.css" rel="stylesheet">
+        <link href="/css/jquery-ui.min.css" rel="stylesheet">
 	</head>
 	<body>
 
         <nav>
             <ul id="menu">
-                <li class="menu_gauche"><a href="<?=URL?>">Accueil</a></li>
-                <li class="menu_gauche"><a href="<?=URL?>projects">Projects</a></li>
+                <li class="menu_gauche"><a href="/">Accueil</a></li>
+                <li class="menu_gauche"><a href="/projects">Projects</a></li>
 
                 <li class="menu_droite"><a href="deconnection">Deconnexion</a></li>
             </ul>

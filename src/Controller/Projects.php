@@ -1,7 +1,6 @@
 <?php
 namespace Tasks\Controller;
 
-use Prim\Translate;
 use Prim\Controller;
 
 use Tasks\Model\Project;
@@ -19,28 +18,16 @@ class Projects extends Controller
     {
         $project = new Project($this->db);
 
-        
+        if(isset($_POST['submit_add_project'])) {
+
+            $project->addProject($_POST['name'], $_POST['description'], $_POST['priority']);
+        }
 
         // getting all projects and amount of projects
         $this->addVar('projects', $project->getAllProjects());
         $this->addVar('amount_of_projects', $project->getAmountOfProjects());
 
         $this->design('projects/index');
-    }
-
-    /**
-     * ACTION: addProject
-     */
-    public function addProject()
-    {
-        $project = new Project($this->db);
-
-        if (isset($_POST['submit_add_project'])) {
-
-            $project->addProject($_POST['name'], $_POST['description'], $_POST['priority']);
-        }
-
-        header('location: ' . URL . 'projects/');
     }
 
     /**
@@ -56,7 +43,7 @@ class Projects extends Controller
             $project->deleteProject($project_id);
         }
 
-        header('location: ' . URL . 'projects/');
+        header('location: /projects/');
     }
 
     /**
@@ -71,6 +58,6 @@ class Projects extends Controller
             $project->updateProject($project_id, $_POST['name'], $_POST['description'],  $_POST['priority']);
         }
 
-        header('location: ' . URL . 'tasks/'.$project_id);
+        header('location: /tasks/'.$project_id);
     }
 }

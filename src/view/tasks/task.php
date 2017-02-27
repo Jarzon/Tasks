@@ -2,7 +2,7 @@
     <h1 class="alignCenter"><?=$task->name ?></h1>
 
     <div>
-        <form action="<?=URL . 'tasks/updatetask/' . $project_id . '/' . $task_id ?>" method="POST">
+        <form action="/tasks/updatetask/<?=$project_id?>/<?$task_id ?>" method="POST">
             <label>Name</label>
             <input type="text" name="name" value="<?=$task->name?>" required>
 

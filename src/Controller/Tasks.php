@@ -37,7 +37,7 @@ class Tasks extends Controller
 
         } else {
             // redirect user to projects index page (as we don't have a project_id)
-            header('location: ' . URL . 'tasks/');
+            header('location: /tasks/');
         }
     }
 
@@ -65,18 +65,18 @@ class Tasks extends Controller
                     $this->design('tasks/task');
                 } else {
                     // redirect user to projects index page (as we don't have a project_id)
-                    header('location: ' . URL . 'error/404');
+                    header('location: /error/404');
                 }
 
 
 
             } else {
                 // redirect user to projects index page (as we don't have a project_id)
-                header('location: ' . URL . 'tasks/'.$project_id);
+                header('location: /tasks/'.$project_id);
             }
         } else {
             // redirect user to projects index page (as we don't have a project_id)
-            header('location: ' . URL . 'projects/');
+            header('location: /projects/');
         }
     }
 
@@ -94,7 +94,7 @@ class Tasks extends Controller
         }
 
         // where to go after task has been added
-        header('location: ' . URL . 'tasks/'.$project_id);
+        header('location: /tasks/' . $project_id);
     }
 
     /**
@@ -111,7 +111,7 @@ class Tasks extends Controller
         }
 
         // where to go after project has been added
-        header('location: ' . URL . 'tasks/'.$project_id);
+        header('location: /tasks/'.$project_id);
     }
 
     /**
@@ -129,7 +129,7 @@ class Tasks extends Controller
         }
 
         // where to go after task has been deleted
-        header('location: ' . URL . 'tasks/');
+        header('location: /tasks/');
     }
 
     /**
@@ -147,7 +147,7 @@ class Tasks extends Controller
         }
 
         // where to go after task has been deleted
-        header('location: ' . URL . 'tasks/'.$project_id);
+        header('location: /tasks/'.$project_id);
     }
 
     /**

@@ -2,7 +2,7 @@
     <h1 class="alignCenter"><?=$_('projects')?></h1>
 
     <div class="box">
-        <form action="<?=URL?>projects/addproject" method="POST">
+        <form method="POST">
             <label><?=$_('name')?></label>
             <input type="text" name="name" value="" required>
 
@@ -30,10 +30,10 @@
             <tbody>
                 <?php foreach ($projects as $project): ?>
                     <tr>
-                        <td><a href="<?=URL . 'tasks/' . $project->id; ?>"><?=$project->name?></a></td>
+                        <td><a href="/tasks/<?=$project->id;?>"><?=$project->name?></a></td>
                         <td><?php if (isset($project->description)) echo $project->description; ?></td>
                         <td><?php if (isset($project->priority)) echo $project->priority; ?></td>
-                        <td><a href="<?=URL . 'projects/deleteproject/' . $project->id?>">delete</a></td>
+                        <td><a href="/projects/deleteproject/<?=$project->id?>">delete</a></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

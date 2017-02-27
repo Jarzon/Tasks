@@ -2,8 +2,7 @@
 $router->get('/', ['\Tasks\Controller\Home', 'index']);
 
 // Projects
-$router->get('/projects', ['\Tasks\Controller\Projects', 'index']);
-$router->post('/projects/addproject', ['\Tasks\Controller\Projects', 'addProject']);
+$router->addRoute(['GET', 'POST'], '/projects', ['\Tasks\Controller\Projects', 'index']);
 $router->get('/projects/deleteproject/{id:\d+}', ['\Tasks\Controller\Projects', 'deleteProject']);
 $router->post('/projects/updateproject/{id:\d+}', ['\Tasks\Controller\Projects', 'updateProject']);
 
