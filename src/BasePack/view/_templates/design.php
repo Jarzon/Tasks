@@ -13,7 +13,7 @@
 		<?php } ?>
 
 		<?php /*TODO: Add a if to use the non minified file when in dev env to be able to debug*/?>
-        <link href="/css/style.min.css" rel="stylesheet">
+        <link href="/css/main.css" rel="stylesheet">
         <link href="/css/jquery-ui.min.css" rel="stylesheet">
 	</head>
 	<body>
