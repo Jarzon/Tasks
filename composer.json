@@ -17,7 +17,7 @@
     },
     "require": {
         "php": ">=7.0.0",
-        "Jarzon/Prim": "0.1.*",
+        "jarzon/prim": "0.1.*",
         "robmorgan/phinx": "0.7.*"
     },
     "require-dev": {
