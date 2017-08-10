@@ -1,5 +1,5 @@
 <?php
-namespace Tasks\Model;
+namespace Tasks\BasePack\Model;
 
 class Project extends \Prim\Model
 {

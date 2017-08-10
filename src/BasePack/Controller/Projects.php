@@ -1,9 +1,9 @@
 <?php
-namespace Tasks\Controller;
+namespace Tasks\BasePack\Controller;
 
 use Prim\Controller;
 
-use Tasks\Model\Project;
+use Tasks\BasePack\Model\Project;
 
 /**
  * Class Projects

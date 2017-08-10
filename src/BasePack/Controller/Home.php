@@ -1,5 +1,5 @@
 <?php
-namespace Tasks\Controller;
+namespace Tasks\BasePack\Controller;
 
 use Prim\Controller;
 

@@ -17,4 +17,4 @@ require APP . 'config/config.php';
         'view.class'    => 'Prim\View',
     ]);
 
-    $app = new Application($container, $container->getController('Tasks\Controller\Error'));
+    $app = new Application($container, $container->getController('Tasks\BasePack\Controller\Error'));

@@ -1,11 +1,11 @@
 <?php
-namespace Tasks\Controller;
+namespace Tasks\BasePack\Controller;
 
 use Prim\Translate;
 use Prim\Controller;
 
-use Tasks\Model\Project;
-use Tasks\Model\Task;
+use Tasks\BasePack\Model\Project;
+use Tasks\BasePack\Model\Task;
 
 class Tasks extends Controller
 {
