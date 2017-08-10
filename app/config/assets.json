@@ -1,0 +1,20 @@
+{
+  "js": {
+    "files": [
+      ["src/*/assets/js/main.js", "main.js"]
+    ],
+    "destination": "public/js"
+  },
+  "css": {
+    "files": [
+      ["src/*/assets/css/main.css", "main.css"]
+    ],
+    "destination": "public/css"
+  },
+  "img": {
+    "files": [
+      ["src/*/assets/img/*", "/"]
+    ],
+    "destination": "public/img"
+  }
+}

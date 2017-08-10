@@ -1,0 +1,24 @@
+{
+  "name": "tasks",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jarzon/tasks.git"
+  },
+  "author": "Jarzon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jarzon/tasks/issues"
+  },
+  "homepage": "https://github.com/Jarzon/tasks#readme",
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "event-stream": "^3.3.4",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-merge-json": "^1.0.0"
+  }
+}

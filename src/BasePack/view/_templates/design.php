@@ -28,7 +28,7 @@
         </nav>
 
         <div id="corp">
-            <div id="message"><?php require "{$this->root}src/$packDirectory/view/$view.php"; ?></div>
+            <div id="message"><?= $this->section('default') ?></div>
         </div>
 
         <footer class="alignCenter clear">

@@ -15,9 +15,13 @@
     "autoload-dev": {
         "psr-4": {"Tests\\": "app/tests/"}
     },
-    "require": {
+    "config": {
+    "bin-dir": "bin",
+    "discard-changes": true
+  },
+  "require": {
         "php": ">=7.0.0",
-        "jarzon/prim": "0.2.*",
+        "jarzon/prim": "0.3.*",
         "robmorgan/phinx": "0.7.*"
     },
     "require-dev": {

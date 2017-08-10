@@ -1,3 +1,5 @@
 .idea/
 vendor/
-app/config/config.php
+app/config/config.phppublic/css
+public/img
+public/js
