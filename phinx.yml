@@ -1,5 +1,6 @@
 paths:
-    migrations: %%PHINX_CONFIG_DIR%%/migrations
+    migrations: %%PHINX_CONFIG_DIR%%/src/*/phinx/migrations
+    seeds: %%PHINX_CONFIG_DIR%%/src/*/phinx/seeds
 
 environments:
     default_migration_table: phinxlog
@@ -9,9 +10,10 @@ environments:
         host: localhost
         name: tasks
         user: root
-        pass: '#@Ur0undr0und5*'
+        pass: ''
         port: 3306
-        charset: utf8
+        charset: utf8mb4
+        collation: utf8mb4_unicode_ci
 
     dev:
         adapter: mysql
@@ -20,13 +22,15 @@ environments:
         user: root
         pass: ''
         port: 3306
-        charset: utf8
+        charset: utf8mb4
+        collation: utf8mb4_unicode_ci
 
     test:
         adapter: mysql
         host: localhost
-        name: testing_db
-        user: tasks
+        name: tasks
+        user: root
         pass: ''
         port: 3306
-        charset: utf8
+        charset: utf8mb4
+        collation: utf8mb4_unicode_ci
