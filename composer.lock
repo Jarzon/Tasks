@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b12c26af20f15adaa8f395049028d64e",
+    "content-hash": "a2bebb7a5839867e98aa4d99d1c77d71",
     "packages": [
         {
             "name": "jarzon/prim",
-            "version": "v0.4.4",
+            "version": "v0.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Jarzon/Prim.git",
-                "reference": "d8149c5ed1a6f3bbf729bb470be8f5231f57004a"
+                "reference": "282162e5cba64fd6fde5f89ce7893de02ce92b00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jarzon/Prim/zipball/d8149c5ed1a6f3bbf729bb470be8f5231f57004a",
-                "reference": "d8149c5ed1a6f3bbf729bb470be8f5231f57004a",
+                "url": "https://api.github.com/repos/Jarzon/Prim/zipball/282162e5cba64fd6fde5f89ce7893de02ce92b00",
+                "reference": "282162e5cba64fd6fde5f89ce7893de02ce92b00",
                 "shasum": ""
             },
             "require": {
@@ -49,7 +49,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2017-05-06T21:10:21+00:00"
+            "time": "2017-06-13T23:51:05+00:00"
         },
         {
             "name": "jarzon/primutilities",
