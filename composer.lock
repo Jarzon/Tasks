@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a2bebb7a5839867e98aa4d99d1c77d71",
+    "content-hash": "903577a60ba035f30b8c7ba36552232a",
     "packages": [
         {
             "name": "jarzon/prim",
-            "version": "v0.5.7",
+            "version": "v0.6.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Jarzon/Prim.git",
-                "reference": "282162e5cba64fd6fde5f89ce7893de02ce92b00"
+                "reference": "cd74d6e9c14abbec0daddd060e7c1f5979731a5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jarzon/Prim/zipball/282162e5cba64fd6fde5f89ce7893de02ce92b00",
-                "reference": "282162e5cba64fd6fde5f89ce7893de02ce92b00",
+                "url": "https://api.github.com/repos/Jarzon/Prim/zipball/cd74d6e9c14abbec0daddd060e7c1f5979731a5c",
+                "reference": "cd74d6e9c14abbec0daddd060e7c1f5979731a5c",
                 "shasum": ""
             },
             "require": {
@@ -25,13 +25,12 @@
                 "php": ">=7.0.0"
             },
             "require-dev": {
-                "phpunit/dbunit": ">=1.2",
-                "phpunit/phpunit": "4.7.*"
+                "phpunit/phpunit": "6.2.*"
             },
             "type": "project",
             "autoload": {
                 "psr-4": {
-                    "Prim\\": "/src"
+                    "Prim\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -49,25 +48,25 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2017-06-13T23:51:05+00:00"
+            "time": "2017-08-11T05:16:22+00:00"
         },
         {
             "name": "jarzon/primutilities",
-            "version": "v0.4.1",
+            "version": "v0.7.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Jarzon/PrimUtilities.git",
-                "reference": "fc68b8ef5334fd32aa01f2c285b04f520a249d85"
+                "reference": "7c508ff63a54de0ec7773d0c0b3a3451f6501038"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jarzon/PrimUtilities/zipball/fc68b8ef5334fd32aa01f2c285b04f520a249d85",
-                "reference": "fc68b8ef5334fd32aa01f2c285b04f520a249d85",
+                "url": "https://api.github.com/repos/Jarzon/PrimUtilities/zipball/7c508ff63a54de0ec7773d0c0b3a3451f6501038",
+                "reference": "7c508ff63a54de0ec7773d0c0b3a3451f6501038",
                 "shasum": ""
             },
             "require-dev": {
-                "phpunit/dbunit": ">=1.2",
-                "phpunit/phpunit": "4.7.*"
+                "jarzon/prim": "0.6.*",
+                "phpunit/phpunit": "6.2.*"
             },
             "type": "project",
             "autoload": {
@@ -76,7 +75,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2017-05-13T02:33:15+00:00"
+            "time": "2017-08-09T03:02:10+00:00"
         },
         {
             "name": "nikic/fast-route",
