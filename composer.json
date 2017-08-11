@@ -21,7 +21,8 @@
   },
   "require": {
     "php": ">=7.0.0",
-    "jarzon/prim": "0.3.*",
+    "jarzon/prim": "0.4.*",
+    "jarzon/primutilities": "0.4.*",
     "robmorgan/phinx": "0.7.*"
   },
   "require-dev": {

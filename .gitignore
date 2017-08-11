@@ -5,3 +5,4 @@ app/config/config.php
 public/css
 public/img
 public/js
+app/config/assets.json

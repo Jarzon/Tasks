@@ -14,11 +14,6 @@
 
   },
   "devDependencies": {
-    "event-stream": "^3.3.4",
-    "del": "^2.2.2",
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-merge-json": "^1.0.0"
+    "primgulp": "^0.5.*"
   }
 }
