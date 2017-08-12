@@ -5,7 +5,7 @@
     ];
 ?>
 <div class="container">
-    <h1 class="alignCenter"><?=$project->name ?></h1>
+    <h1 class="alignCenter"><?=$project->name ?><?= $_(' tasks list')?></h1>
 
     <div>
         <form action="/projects/updateproject/<?=$project_id ?>" method="POST">
@@ -16,12 +16,11 @@
             <input type="text" name="description" value="<?=$project->description ?>" required>
 
             <label>Priority</label>
-            <input type="text" name="priority" value="<?=$project->priority ?>">
+            <input type="number" name="priority" value="<?=$project->priority ?>">
 
             <input type="submit" name="submit_update_project" value="Update">
         </form>
 
-        <h3>List of tasks</h3>
         <table class="table">
             <thead>
             <tr class="grey">
