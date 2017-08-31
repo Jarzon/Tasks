@@ -7,7 +7,7 @@
   },
   "css": {
     "files": {
-      "main.css": ["node_modules/bootstrap/dist/css/bootstrap.min.css"]
+      "main.css": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "src/*/assets/css/main.css"]
     },
     "destination": "public/css"
   },

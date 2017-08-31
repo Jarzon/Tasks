@@ -29,9 +29,13 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">Accueil</a></li>
-                    <li><a href="/projects">Projects</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <?php
+                        $links = ['/' => 'Accueil', '/projects' => 'Projects', '/contact' => 'Contact'];
+
+                        foreach ($links as $link => $text): ?>
+                            <li <?=(strpos($_SERVER['REQUEST_URI'], $link) !== false)? 'class="active"': ''?>><a href="<?=$link?>"><?=$text?></a></li>
+                    <?php endforeach; ?>
+
 <!--                    <li class="dropdown">-->
 <!--                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
 <!--                        <ul class="dropdown-menu">-->
