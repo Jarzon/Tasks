@@ -11,7 +11,7 @@
   },
   "homepage": "https://github.com/Jarzon/tasks#readme",
   "dependencies": {
-
+    "bootstrap": "^3.3.7"
   },
   "devDependencies": {
     "primgulp": "^0.5.*"
