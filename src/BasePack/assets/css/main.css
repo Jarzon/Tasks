@@ -8,7 +8,7 @@
 
 .navbar-default .navbar-brand {
     color: #efefef;
-
+}
 
 .navbar-default .navbar-nav > li > a:hover {
     color: #efefef;
@@ -17,4 +17,9 @@
 .navbar-default .navbar-nav > .active > a {
     background-color: #999;
     color: #efefef;
+}
+
+.done td {
+    background: #a6ffc0;
+    text-decoration: line-through;
 }
