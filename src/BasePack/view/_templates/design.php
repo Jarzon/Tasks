@@ -32,8 +32,9 @@
                     <?php
                         $links = ['/' => 'Accueil', '/projects' => 'Projects', '/contact' => 'Contact'];
 
-                        foreach ($links as $link => $text): ?>
-                            <li <?=(strpos($_SERVER['REQUEST_URI'], $link) !== false)? 'class="active"': ''?>><a href="<?=$link?>"><?=$text?></a></li>
+                        foreach ($links as $link => $text):
+                            ?>
+                            <li <?=($_SERVER['REQUEST_URI'] === $link)? 'class="active"': ''?>><a href="<?=$link?>"><?=$text?></a></li>
                     <?php endforeach; ?>
 
 <!--                    <li class="dropdown">-->
