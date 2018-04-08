@@ -1,7 +1,7 @@
 <?php
 namespace Tasks\BasePack\Controller;
 
-use Prim\Translate;
+use Jarzon\Forms;
 use Prim\Controller;
 
 use Tasks\BasePack\Model\Project;
@@ -9,75 +9,96 @@ use Tasks\BasePack\Model\Task;
 
 class Tasks extends Controller
 {
+    public function getForms() {
+        $forms = new Forms($_POST);
 
-    /**
-     * @param int $project_id
-     */
-    public function index($project_id)
-    {
-        $project = new Project($this->db);
-        $task = new Task($this->db);
-
-        // if we have an id of a project that should be edited
-        if (isset($project_id) && is_numeric($project_id)) {
-            
-
-            // do getProject() in model/model.php
-            $this->addVar('project', $project->getProject($project_id));
-
-            // in a real application we would also check if this db entry exists and therefore show the result or
-            // redirect the user to an error page or similar
-
-            $this->addVar('tasks', $task->getAllProjectTasks($project_id));
-
-            $this->addVar('project_id', $project_id);
-
-            // load views. within the views we can echo out $project easily
-            $this->design('tasks/index');
-
-        } else {
-            // redirect user to projects index page (as we don't have a project_id)
-            header('location: /tasks/');
-        }
+        return $forms
+            ->text('name')->label('Name')->required()
+            ->text('description')->label('Description')->required()
+            ->number('priority')->label('Priority')->required();
     }
 
-    /**
-     * ACTION: showTask
-     */
+    public function index($project_id)
+    {
+        /**
+         * @var Project $project
+         * @var Task $task
+         */
+        $project = $this->getModel('Project');
+        $task = $this->getModel('Task');
+
+        $taskForms = $this->getForms();
+
+        $projectForms = $this->container->getController('Tasks\BasePack\Controller\Projects')->getForms();
+
+        if (!isset($project_id) || !is_numeric($project_id)) {
+            $this->redirect('/tasks/');
+        }
+
+        // in a real application we would also check if this db entry exists and therefore show the result or
+        // redirect the user to an error page or similar
+
+        // load views. within the views we can echo out $project easily
+        $this->design('tasks/index', 'BasePack', [
+            'project' => $project->get($project_id),
+            'projectForms' => $projectForms->getForms(),
+            'tasks' => $task->getAllProjectTasks($project_id),
+            'taskForms' => $taskForms->getForms(),
+            'project_id' => $project_id
+        ]);
+    }
+
+    public function addTask($project_id)
+    {
+        /** @var Task $task */
+        $task = $this->getModel('Task');
+
+        $forms = $this->getForms();
+
+        if (isset($_POST['submit_add_task'])) {
+            try {
+                $values = $forms->verification();
+            }
+            catch (\Exception $e) {
+                $this->addVar('message', ['alert', $e->getMessage()]);
+            }
+
+            if(isset($values)) {
+                $values['project_id'] = $project_id;
+
+                $task->add($values);
+
+                $this->addVar('message', ['ok', 'The task have been added']);
+            }
+        }
+
+        $this->redirect("/tasks/$project_id");
+    }
+
     public function showTask($project_id, $task_id)
     {
-        $task = new Task($this->db);
+        /** @var Task $task */
+        $task = $this->getModel('Task');
 
-        if (isset($project_id) && is_numeric($project_id)) {
+        if(!is_numeric($project_id)) {
+            $this->redirect('/projects/');
+        }
+        else if (!is_numeric($task_id)) {
+            $this->redirect("/projects/$project_id");
+        }
 
-            if (isset($task_id) && is_numeric($task_id)) {
-                
+        // in a real application we would also check if this db entry exists and therefore show the result or
+        // redirect the user to an error page or similar
 
-                // in a real application we would also check if this db entry exists and therefore show the result or
-                // redirect the user to an error page or similar
-
-                if($task = $task->getTask($task_id))
-                {
-                    $this->addVar('task', $task);
-                    $this->addVar('project_id', $project_id);
-                    $this->addVar('task_id', $task_id);
-
-                    // load views. within the views we can echo out $project easily
-                    $this->design('tasks/task');
-                } else {
-                    // redirect user to projects index page (as we don't have a project_id)
-                    header('location: /error/404');
-                }
-
-
-
-            } else {
-                // redirect user to projects index page (as we don't have a project_id)
-                header('location: /tasks/'.$project_id);
-            }
+        if($task = $task->get($task_id)) {
+            // load views. within the views we can echo out $project easily
+            $this->design('tasks/task', 'BasePack', [
+                'task' => $task,
+                'project_id' => $project_id,
+                'task_id' => $task_id,
+            ]);
         } else {
-            // redirect user to projects index page (as we don't have a project_id)
-            header('location: /projects/');
+            $this->redirect('/error/404');
         }
     }
 
@@ -86,33 +107,35 @@ class Tasks extends Controller
      */
     public function updateTask($project_id, $task_id)
     {
-        $task = new Task($this->db);
+        /** @var Task $task */
+        $task = $this->getModel('Task');
+
+        $forms = $this->getForms();
+
+        if (isset($_POST['submit_update_task'])) {
+            try {
+                $values = $forms->verification();
+            }
+            catch (\Exception $e) {
+                $this->addVar('message', ['alert', $e->getMessage()]);
+            }
+
+            if(isset($values)) {
+                $task->change($values, $project_id, $task_id);
+
+                $this->addVar('message', ['ok', 'The task have been added']);
+            }
+        }
 
         // if we have POST data to create a new task entry
         if (isset($_POST["submit_update_task"])) {
             // do updateTask() from model/model.php
+            $task->change($values);
             $task->updateTask($_POST['name'], $_POST['description'],  $_POST['priority'], $project_id, $task_id);
         }
 
         // where to go after task has been added
-        header('location: /tasks/' . $project_id);
-    }
-
-    /**
-     * ACTION: addTask
-     */
-    public function addTask($project_id)
-    {
-        $task = new Task($this->db);
-
-        // if we have POST data to create a new project entry
-        if (isset($_POST['submit_add_task'])) {
-
-            $task->addTask($_POST['name'], $_POST['description'], $_POST['priority'], $project_id);
-        }
-
-        // where to go after project has been added
-        header('location: /tasks/'.$project_id);
+        $this->redirect("/tasks/$project_id");
     }
 
     /**
@@ -121,7 +144,8 @@ class Tasks extends Controller
      */
     public function deleteTask($task_id)
     {
-        $task = new Task($this->db);
+        /** @var Task $task */
+        $task = $this->getModel('Task');
 
         // if we have an id of a task that should be deleted
         if (isset($task_id)) {
@@ -129,8 +153,7 @@ class Tasks extends Controller
             $task->deleteTask($task_id);
         }
 
-        // where to go after task has been deleted
-        header('location: /tasks/');
+        $this->redirect("/tasks/");
     }
 
     /**
@@ -139,7 +162,8 @@ class Tasks extends Controller
      */
     public function doneTask($project_id, $task_id)
     {
-        $task = new Task($this->db);
+        /** @var Task $task */
+        $task = $this->getModel('Task');
 
         // if we have an id of a task that should be deleted
         if (isset($task_id)) {
@@ -147,21 +171,6 @@ class Tasks extends Controller
             $task->doneTask($project_id, $task_id);
         }
 
-        // where to go after task has been deleted
-        header('location: /tasks/'.$project_id);
+        $this->redirect("/tasks/$project_id");
     }
-
-    /**
-     * AJAX-ACTION: ajaxGetStats
-     */
-    public function ajaxGetStats()
-    {
-        $task = new Task($this->db);
-
-        $amount_of_projects = $task->getAmountOfProjects();
-
-        // simply echo out something. A supersimple API would be possible by echoing JSON here
-        echo $amount_of_projects;
-    }
-
 }

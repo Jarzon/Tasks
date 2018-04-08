@@ -1,16 +1,17 @@
 <div class="container">
-    <h1 class="alignCenter"><?=$_('projects')?></h1>
+    <h1 class="alignCenter">Projects</h1>
 
     <div class="box">
         <form method="POST">
-            <label><?=$_('name')?></label>
-            <input type="text" name="name" value="" required>
-
-            <label><?=$_('description')?></label>
-            <input type="text" name="description" value="" required>
-
-            <label><?=$_('priority')?></label>
-            <input type="number" name="priority" value="">
+            <?php foreach ($forms as $form):?>
+                <?php if($form['type'] == 'radio'): ?>
+                    <?php foreach ($form['html'] as $radio):?>
+                        <label class="listLabel"><?=$radio['input']?> <?=$radio['label']?></label>
+                    <?php endforeach;?>
+                <?php else: ?>
+                    <label class="listLabel"><?=$form['label']?><br> <?=$form['html']?></label>
+                <?php endif; ?>
+            <?php endforeach;?>
 
             <input type="submit" name="submit_add_project" value="Create">
         </form>

@@ -15,32 +15,24 @@ class Task extends \Prim\Model
         return $query->fetchAll();
     }
 
-    public function getTask($task_id)
+    public function get($task_id)
     {
-        $sql = "SELECT name, description, priority FROM task WHERE id = :task_id";
-        $query = $this->db->prepare($sql);
+        $sql = "SELECT name, description, priority FROM task WHERE id = ?";
+        $query = $this->prepare($sql);
 
-        $parameters = array(':task_id' => $task_id);
-
-        $query->execute($parameters);
+        $query->execute([$task_id]);
 
         return $query->fetch();
     }
 
-    /**
-     * Update a task in database
-     * @param string $name
-     * @param string $description
-     * @param string $priority
-     * @param int $project_id
-     */
-    public function updateTask($name, $description, $priority, $project_id, $task_id)
+    public function add(array $values)
     {
-        $sql = "UPDATE task SET name = :name, description = :description, priority = :priority WHERE id = :task_id AND project_id = :project_id ";
-        $query = $this->db->prepare($sql);
-        $parameters = array(':name' => $name, ':description' => $description, ':priority' => $priority, ':project_id' => $project_id, ':task_id' => $task_id);
+        return $this->insert('task', $values);
+    }
 
-        $query->execute($parameters);
+    public function change($values, $project_id, $task_id)
+    {
+        return $this->update('task', $values, 'id = ? AND project_id = ?', [$task_id, $project_id]);
     }
 
     /**
@@ -55,22 +47,6 @@ class Task extends \Prim\Model
         $query->execute($parameters);
 
         return $query->fetch();
-    }
-
-    /**
-     * Add a project to database
-     * @param string $name
-     * @param string $description
-     * @param string $priority
-     * @param int $project_id
-     */
-    public function addTask($name, $description, $priority, $project_id)
-    {
-        $sql = "INSERT INTO task (project_id, name, description, priority) VALUES (:project_id, :name, :description, :priority)";
-        $query = $this->db->prepare($sql);
-        $parameters = array(':project_id' => $project_id, ':name' => $name, ':description' => $description, ':priority' => $priority);
-
-        $query->execute($parameters);
     }
 
     /**

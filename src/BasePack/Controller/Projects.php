@@ -3,6 +3,8 @@ namespace Tasks\BasePack\Controller;
 
 use Prim\Controller;
 
+use Jarzon\Forms;
+
 use Tasks\BasePack\Model\Project;
 
 /**
@@ -11,53 +13,82 @@ use Tasks\BasePack\Model\Project;
  */
 class Projects extends Controller
 {
-    /**
-     * PAGE: index
-     */
-    public function index()
-    {
-        $project = new Project($this->db);
+    public function getForms() {
+        $forms = new Forms($_POST);
 
-        if(isset($_POST['submit_add_project'])) {
-
-            $project->addProject($_POST['name'], $_POST['description'], $_POST['priority']);
-        }
-
-        // getting all projects and amount of projects
-        $this->addVar('projects', $project->getAllProjects());
-        $this->addVar('amount_of_projects', $project->getAmountOfProjects());
-
-        $this->design('projects/index');
+        return $forms
+        ->text('name')->label('Name')->required()
+        ->text('description')->label('Description')->required()
+        ->number('priority')->label('Priority')->required();
     }
 
-    /**
-     * ACTION: deleteProject
-     * @param int $project_id Id of the to-delete project
-     */
+    public function index()
+    {
+        /** @var Project $project */
+        $project = $this->getModel('Project');
+
+        $forms = $this->getForms();
+
+        if(isset($_POST['submit_add_project'])) {
+            try {
+                $values = $forms->verification();
+            }
+            catch (\Exception $e) {
+                $this->addVar('message', ['alert', $e->getMessage()]);
+            }
+
+            if(isset($values)) {
+                $project->add($values);
+
+                $this->addVar('message', ['ok', 'The project have been added']);
+            }
+        }
+
+        $this->design('projects/index', 'BasePack', [
+            'projects' => $project->getAllProjects(),
+            'forms' => $forms->getForms()
+        ]);
+    }
+
+    public function updateProject($project_id)
+    {
+        /** @var Project $project */
+        $project = $this->getModel('Project');
+
+        $forms = $this->getForms();
+
+        if (isset($_POST['submit_update_project'])) {
+            try {
+                $values = $forms->verification();
+            }
+            catch (\Exception $e) {
+                $this->addVar('message', ['alert', $e->getMessage()]);
+            }
+
+            if(isset($values)) {
+                $project->change($values, $project_id);
+
+                $this->addVar('message', ['ok', 'The statement have been added']);
+            }
+
+
+
+
+        }
+
+        $this->redirect("/tasks/$project_id");
+    }
+
     public function deleteProject($project_id)
     {
-        $project = new Project($this->db);
+        /** @var Project $project */
+        $project = $this->getModel('Project');
 
         if (isset($project_id)) {
 
-            $project->deleteProject($project_id);
+            $project->delete($project_id);
         }
 
         header('location: /projects/');
-    }
-
-    /**
-     * ACTION: updateProject
-     * @param int $project_id Id of the project to update
-     */
-    public function updateProject($project_id)
-    {
-        $project = new Project($this->db);
-
-        if (isset($_POST['submit_update_project'])) {
-            $project->updateProject($project_id, $_POST['name'], $_POST['description'],  $_POST['priority']);
-        }
-
-        header('location: /tasks/'.$project_id);
     }
 }

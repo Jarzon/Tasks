@@ -5,18 +5,19 @@
     ];
 ?>
 <div class="container">
-    <h1 class="alignCenter"><?=$project->name ?><?= $_(' tasks list')?></h1>
+    <h1 class="alignCenter"><?=$project->name ?> tasks list</h1>
 
     <div>
         <form action="/projects/updateproject/<?=$project_id ?>" method="POST">
-            <label>Name</label>
-            <input type="text" name="name" value="<?=$project->name ?>" required>
-
-            <label>Description</label>
-            <input type="text" name="description" value="<?=$project->description ?>" required>
-
-            <label>Priority</label>
-            <input type="number" name="priority" value="<?=$project->priority ?>">
+            <?php foreach ($projectForms as $form):?>
+                <?php if($form['type'] == 'radio'): ?>
+                    <?php foreach ($form['html'] as $radio):?>
+                        <label class="listLabel"><?=$radio['input']?> <?=$radio['label']?></label>
+                    <?php endforeach;?>
+                <?php else: ?>
+                    <label class="listLabel"><?=$form['label']?><br> <?=$form['html']?></label>
+                <?php endif; ?>
+            <?php endforeach;?>
 
             <input type="submit" name="submit_update_project" value="Update">
         </form>
@@ -44,14 +45,15 @@
 
         <div class="box">
             <form action="/tasks/addtask/<?=$project_id?>" method="POST">
-                <label>Name</label>
-                <input type="text" name="name" value="" required>
-
-                <label>Description</label>
-                <input type="text" name="description" value="" required>
-
-                <label>Priority</label>
-                <input type="number" name="priority" value="">
+                <?php foreach ($taskForms as $form):?>
+                    <?php if($form['type'] == 'radio'): ?>
+                        <?php foreach ($form['html'] as $radio):?>
+                            <label class="listLabel"><?=$radio['input']?> <?=$radio['label']?></label>
+                        <?php endforeach;?>
+                    <?php else: ?>
+                        <label class="listLabel"><?=$form['label']?><br> <?=$form['html']?></label>
+                    <?php endif; ?>
+                <?php endforeach;?>
 
                 <input type="submit" name="submit_add_task" value="Create">
             </form>
