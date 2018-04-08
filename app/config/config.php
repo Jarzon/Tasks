@@ -8,7 +8,7 @@ return [
     'db_enable' => true,
     'db_type' => 'mysql',
     'db_host' => '127.0.0.1',
-    'db_name' => $name,
+    'db_name' => 'tasks',
     'db_user' => 'root',
     'db_password' => '',
     'db_charset' => 'utf8',

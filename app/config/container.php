@@ -1,5 +1,6 @@
 <?php
 return [
-    'view.class'    => '\Tasks\BasePack\Service\View',
+    'container.class'    => 'Tasks\BasePack\Service\Container',
     'router.class'    => 'Prim\Router',
+    'pdo.class'    => 'PrimPack\Service\PDO',
 ];
