@@ -14,6 +14,6 @@
     "bootstrap": "^3.3.7"
   },
   "devDependencies": {
-    "primgulp": "^0.5.*"
+    "primgulp": "^0.8.*"
   }
 }
