@@ -1,3 +1,3 @@
 <div class="container">
-    <h1 class="alignCenter"><?=$_('welcome')?></h1>
+    <h1 class="alignCenter">Welcome</h1>
 </div>

@@ -1,18 +1,18 @@
 <?php
-use Prim\Application;
-use Prim\Container;
+use Tasks\BasePack\Service\Container;
 
-// Project's folder path
-define('ROOT', dirname(__DIR__) . DIRECTORY_SEPARATOR); // /var/www/
-define('APP', ROOT . 'app' . DIRECTORY_SEPARATOR); // /var/www/app
+$root = dirname(__DIR__) . DIRECTORY_SEPARATOR;
+
+$config = [
+    'root' => $root,
+    'app' => "{$root}app/"
+];
 
 // Composer autoloading
-require ROOT . 'vendor/autoload.php';
+require  "{$config['root']}vendor/autoload.php";
 
-// load application config (error reporting etc.)
-require APP . 'config/config.php';
+$config = (include("{$config['app']}config/config.php")) + $config;
 
+$container = new Container(include("{$config['app']}config/container.php"), $config);
 
-    $container = new Container(include(APP . '/config/container.php'));
-
-    $app = new Application($container, $container->getController('Tasks\BasePack\Controller\Error'));
+$container->getApplication();

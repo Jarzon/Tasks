@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c1551419c6f1a42cb469352aeeb2dc6",
+    "content-hash": "17d297b3d16af38906a35f228778c31b",
     "packages": [
         {
             "name": "jarzon/forms",
@@ -78,6 +78,37 @@
                 "framework"
             ],
             "time": "2018-03-25T01:20:21+00:00"
+        },
+        {
+            "name": "jarzon/primpack",
+            "version": "v0.5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Jarzon/PrimPack.git",
+                "reference": "fbd6b60f9f05711b96b3ab0a53b92343230cdaf2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Jarzon/PrimPack/zipball/fbd6b60f9f05711b96b3ab0a53b92343230cdaf2",
+                "reference": "fbd6b60f9f05711b96b3ab0a53b92343230cdaf2",
+                "shasum": ""
+            },
+            "require": {
+                "jarzon/prim": "^0.12.0",
+                "php": ">=7.2.0"
+            },
+            "require-dev": {
+                "phpunit/dbunit": "3.0.*",
+                "phpunit/phpunit": "6.1.*"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "PrimPack\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2018-03-25T01:43:03+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -2004,7 +2035,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.0.0"
+        "php": ">=7.2.0"
     },
     "platform-dev": []
 }
