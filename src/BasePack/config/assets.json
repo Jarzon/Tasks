@@ -16,5 +16,11 @@
       "": ["src/*/assets/img/*.*"]
     },
     "destination": "public/img"
+  },
+  "files": {
+    "files": {
+
+    },
+    "destination": "public/files"
   }
 }
