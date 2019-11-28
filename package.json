@@ -10,10 +10,17 @@
     "url": "https://github.com/Jarzon/tasks/issues"
   },
   "homepage": "https://github.com/Jarzon/tasks#readme",
+  "scripts": {
+    "update": "npm update",
+    "gulpstop": "node -r \"fs\" -e \"fs.closeSync(fs.openSync('./.stop.primgulp', 'w'))\"",
+    "gulprestart": "node -r \"fs\" -e \"fs.unlink('./.stop.primgulp', function(err) {if(err) console.log(err)})\"",
+    "gulp": "gulp",
+    "test": "mocha"
+  },
   "dependencies": {
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.4.1"
   },
   "devDependencies": {
-    "primgulp": "^0.8.*"
+    "primgulp": "^0.8.18"
   }
 }

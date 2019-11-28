@@ -18,9 +18,7 @@
     "destination": "public/img"
   },
   "files": {
-    "files": {
-
-    },
+    "files": {},
     "destination": "public/files"
   }
 }
